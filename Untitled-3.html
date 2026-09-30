@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sandeep &amp; Harshitha — Wedding Invitation</title>
+  <style>
+    :root {
+      --ink: #27120d;
+      --wine: #6e1725;
+      --gold: #a87525;
+      --paper: #fff9eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      color: var(--ink);
+      background: #ead8c5;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .card {
+      position: relative;
+      width: min(760px, 100%);
+      min-height: 1060px;
+      overflow: hidden;
+      padding: 42px 56px 38px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 28%, rgba(255,255,255,.92), transparent 54%),
+        linear-gradient(145deg, #fffdf4, var(--paper) 58%, #f7ead6);
+      border: 2px solid var(--gold);
+      outline: 8px double var(--gold);
+      outline-offset: -18px;
+      box-shadow: 0 22px 65px rgba(55, 28, 17, .25);
+    }
+
+    .card::before,
+    .card::after {
+      content: "❧";
+      position: absolute;
+      top: 48px;
+      color: var(--gold);
+      font-size: 48px;
+    }
+
+    .card::before { left: 55px; transform: rotate(-35deg); }
+    .card::after { right: 55px; transform: scaleX(-1) rotate(-35deg); }
+
+    .love-hearts {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .love-hearts span {
+      position: absolute;
+      bottom: -60px;
+      left: var(--x);
+      color: var(--heart);
+      font: 700 var(--size)/1 Georgia, serif;
+      opacity: 0;
+      text-shadow: 0 2px 5px rgba(110, 23, 37, .16);
+      animation: heart-flight var(--duration) var(--delay) infinite ease-in;
+    }
+
+    @keyframes heart-flight {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(-12deg) scale(.7);
+        opacity: 0;
+      }
+      12% { opacity: .82; }
+      52% { transform: translate3d(22px, -520px, 0) rotate(12deg) scale(1); }
+      88% { opacity: .62; }
+      100% {
+        transform: translate3d(-16px, -1080px, 0) rotate(-9deg) scale(.78);
+        opacity: 0;
+      }
+    }
+
+    .om {
+      color: var(--wine);
+      font-size: 42px;
+      font-weight: 700;
+      margin: 4px 0 6px;
+    }
+
+    .welcome {
+      margin: 3px 0 6px;
+      color: var(--wine);
+      font-size: clamp(38px, 8vw, 62px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-shadow: 1px 2px 0 #d7b77c;
+    }
+
+    .welcome-sub {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .rule {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      width: 76%;
+      margin: 20px auto;
+      color: var(--gold);
+      font-size: 22px;
+    }
+
+    .rule::before,
+    .rule::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--gold);
+    }
+
+    .intro {
+      margin: 0 auto;
+      max-width: 510px;
+      font-size: 19px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .names {
+      margin: 10px 0 0;
+      color: var(--wine);
+      font-size: clamp(37px, 8vw, 58px);
+      line-height: 1.02;
+      font-weight: 700;
+    }
+
+    .amp {
+      display: block;
+      margin: 2px 0;
+      color: var(--gold);
+      font-size: 29px;
+      font-style: italic;
+    }
+
+    .couple-art {
+      display: block;
+      width: min(430px, 100%);
+      height: 315px;
+      margin: 13px auto 2px;
+    }
+
+    .details {
+      margin-top: 4px;
+      font-size: 20px;
+      line-height: 1.48;
+      font-weight: 700;
+    }
+
+    .date {
+      color: var(--wine);
+      font-size: 33px;
+      font-weight: 900;
+      letter-spacing: .035em;
+    }
+
+    .time { font-size: 25px; font-weight: 900; }
+    .place { font-size: 23px; font-weight: 900; }
+
+    .thanks {
+      margin: 13px 0 0;
+      color: var(--wine);
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: .055em;
+      text-shadow: 1px 1px #d7b77c;
+    }
+
+    .bottom {
+      position: absolute;
+      right: 42px;
+      bottom: 25px;
+      left: 42px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+    }
+
+    .namaskar { width: 104px; height: 124px; }
+
+    .footer {
+      padding-bottom: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .love-hearts span {
+        animation: none;
+        opacity: .22;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 16px; }
+
+      .card {
+        min-height: 950px;
+        padding: 34px 26px 150px;
+        outline-offset: -12px;
+      }
+
+      .card::before { left: 28px; top: 38px; font-size: 36px; }
+      .card::after { right: 28px; top: 38px; font-size: 36px; }
+      .om { font-size: 34px; }
+      .intro { font-size: 17px; }
+      .couple-art { height: 250px; }
+      .details { font-size: 18px; }
+      .date { font-size: 28px; }
+      .thanks { font-size: 29px; }
+      .bottom { right: 20px; left: 20px; bottom: 18px; }
+      .namaskar { width: 76px; height: 96px; }
+      .footer { max-width: 110px; font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Wedding invitation for Sandeep and Harshitha">
+    <div class="love-hearts" aria-hidden="true">
+      <span style="--x:8%;--size:27px;--duration:10s;--delay:-1s;--heart:#a41e37">♥</span>
+      <span style="--x:21%;--size:18px;--duration:12s;--delay:-7s;--heart:#c44c59">♥</span>
+      <span style="--x:36%;--size:23px;--duration:11s;--delay:-4s;--heart:#8d182e">♥</span>
+      <span style="--x:53%;--size:19px;--duration:13s;--delay:-9s;--heart:#bd7952">♥</span>
+      <span style="--x:68%;--size:28px;--duration:10s;--delay:-5s;--heart:#a41e37">♥</span>
+      <span style="--x:84%;--size:20px;--duration:12s;--delay:-2s;--heart:#c44c59">♥</span>
+      <span style="--x:94%;--size:25px;--duration:14s;--delay:-11s;--heart:#8d182e">♥</span>
+    </div>
+
+    <div class="om" aria-hidden="true">ॐ</div>
+    <h1 class="welcome">Welcome</h1>
+    <p class="welcome-sub">All are warmly welcome</p>
+    <div class="rule" aria-hidden="true">❀</div>
+    <p class="intro">With the blessings of our families, please join us to celebrate the wedding of</p>
+    <h2 class="names">Sandeep <span class="amp">with</span> Harshitha</h2>
+
+    <svg class="couple-art" viewBox="0 0 440 320" role="img" aria-label="Illustration of a groom and bride">
+      <defs>
+        <linearGradient id="brideSari" x1="0" x2="1" y1="0" y2="1">
+          <stop stop-color="#a41e37"/>
+          <stop offset="1" stop-color="#681327"/>
+        </linearGradient>
+        <linearGradient id="groomSherwani" x1="0" x2="1">
+          <stop stop-color="#f4e5c6"/>
+          <stop offset="1" stop-color="#d4b77c"/>
+        </linearGradient>
+      </defs>
+
+      <circle cx="220" cy="145" r="117" fill="#f7e9ce" stroke="#bd8b3d" stroke-width="2" stroke-dasharray="2 7"/>
+      <path d="M105 226 Q220 259 335 226" fill="none" stroke="#bd8b3d" stroke-width="2"/>
+
+      <!-- Groom -->
+      <path d="M99 112 Q112 53 160 53 Q207 57 214 112 L205 137 L105 137Z" fill="#681327" stroke="#401018" stroke-width="3"/>
+      <path d="M108 104 Q155 75 204 104 L207 113 Q157 99 105 117Z" fill="#d2aa57"/>
+      <circle cx="157" cy="127" r="38" fill="#bd7952"/>
+      <path d="M121 117 Q125 81 157 82 Q188 82 194 117 Q178 103 157 104 Q137 103 121 117Z" fill="#261713"/>
+      <path d="M139 128 Q157 137 176 128" fill="none" stroke="#542718" stroke-width="3" stroke-linecap="round"/>
+      <path d="M112 175 Q157 151 202 175 L220 282 L93 282Z" fill="url(#groomSherwani)" stroke="#a47d3d" stroke-width="3"/>
+      <path d="M145 163 L157 182 L170 163 L181 282 L134 282Z" fill="#fff7e7" stroke="#c5a66a" stroke-width="2"/>
+      <path d="M157 181 L157 263" stroke="#8b682e" stroke-width="2" stroke-dasharray="3 7"/>
+      <path d="M108 195 Q91 213 115 238 M201 195 Q222 211 206 235" fill="none" stroke="#bd7952" stroke-width="13" stroke-linecap="round"/>
+
+      <!-- Bride -->
+      <path d="M231 112 Q237 54 282 53 Q329 57 340 112 L333 137 L235 137Z" fill="#8d182e" stroke="#50101e" stroke-width="3"/>
+      <path d="M235 105 Q285 80 336 106 L339 116 Q286 98 232 117Z" fill="#d2aa57"/>
+      <circle cx="285" cy="127" r="38" fill="#c9825a"/>
+      <path d="M247 120 Q246 69 286 70 Q326 73 324 130 Q311 99 286 99 Q266 100 247 120Z" fill="#211512"/>
+      <path d="M269 132 Q285 139 302 132" fill="none" stroke="#542718" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="285" cy="139" r="4" fill="#9f1d2e"/>
+      <path d="M241 172 Q285 150 329 173 L370 282 L210 282Z" fill="url(#brideSari)" stroke="#d3a74f" stroke-width="3"/>
+      <path d="M243 181 Q286 200 330 176 L365 272 Q309 250 224 278Z" fill="none" stroke="#e3bf69" stroke-width="6"/>
+      <path d="M250 183 Q285 198 321 182" fill="none" stroke="#f1d58c" stroke-width="3"/>
+      <path d="M268 168 Q286 186 303 168" fill="none" stroke="#d2aa57" stroke-width="5"/>
+
+      <!-- Wedding garland -->
+      <path d="M151 160 Q220 224 290 160" fill="none" stroke="#f7f0d9" stroke-width="12" stroke-linecap="round"/>
+      <path d="M151 160 Q220 224 290 160" fill="none" stroke="#bf3343" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>
+      <circle cx="220" cy="218" r="9" fill="#d3a74f"/>
+    </svg>
+
+    <section class="details" aria-label="Wedding details">
+      <div>JOYFULLY INVITE YOU TO CELEBRATE</div>
+      <div class="date">27th September 2026</div>
+      <div class="time">10:00 AM</div>
+      <div class="place">Vijayawada</div>
+    </section>
+
+    <p class="thanks">THANK YOU ALL!</p>
+
+    <div class="bottom" aria-hidden="true">
+      <svg class="namaskar" viewBox="0 0 120 140">
+        <path d="M23 135 Q26 88 32 63 Q36 52 44 59 L45 84 L48 35 Q50 25 57 32 L59 78 L63 23 Q67 13 73 22 L74 78 L80 31 Q85 23 90 33 L86 87 L97 59 Q106 51 108 65 L99 108 Q93 128 87 135Z" fill="#d7a07a" stroke="#60241c" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M51 83 Q49 58 44 49 Q39 41 33 48 Q29 52 35 65 M69 77 L68 34 M80 78 L84 42" fill="none" stroke="#60241c" stroke-width="3" stroke-linecap="round"/>
+        <path d="M57 112 Q72 124 87 112" fill="none" stroke="#60241c" stroke-width="3"/>
+        <path d="M51 91 L91 91 M49 99 L89 99" stroke="#b33233" stroke-width="4"/>
+        <path d="M52 128 Q65 134 81 128" fill="none" stroke="#8c172d" stroke-width="5"/>
+      </svg>
+
+      <div class="footer">WITH LOVE &amp; BLESSINGS</div>
+
+      <svg class="namaskar" viewBox="0 0 120 140" style="transform:scaleX(-1)">
+        <path d="M23 135 Q26 88 32 63 Q36 52 44 59 L45 84 L48 35 Q50 25 57 32 L59 78 L63 23 Q67 13 73 22 L74 78 L80 31 Q85 23 90 33 L86 87 L97 59 Q106 51 108 65 L99 108 Q93 128 87 135Z" fill="#d7a07a" stroke="#60241c" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M51 83 Q49 58 44 49 Q39 41 33 48 Q29 52 35 65 M69 77 L68 34 M80 78 L84 42" fill="none" stroke="#60241c" stroke-width="3" stroke-linecap="round"/>
+        <path d="M57 112 Q72 124 87 112" fill="none" stroke="#60241c" stroke-width="3"/>
+        <path d="M51 91 L91 91 M49 99 L89 99" stroke="#b33233" stroke-width="4"/>
+        <path d="M52 128 Q65 134 81 128" fill="none" stroke="#8c172d" stroke-width="5"/>
+      </svg>
+    </div>
+  </main>
+</body>
+</html>
